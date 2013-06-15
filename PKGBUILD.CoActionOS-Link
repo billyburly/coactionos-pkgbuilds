@@ -1,0 +1,28 @@
+# $Id: pkgbuild-mode.el,v 1.23 2007/10/20 16:02:14 juergen Exp $
+# Maintainer:  <durrw@durrwt430>
+pkgname=coactionos-link  
+pkgver=1.2.6
+pkgrel=1 
+pkgdesc="CoActionOS Link"
+url="http://www.coactionos.com"
+arch=('i686' 'x86_64')
+license=('LGPL')
+depends=('qt4')
+makedepends=('unzip' 'coactionos')
+conflicts=()
+replaces=()
+backup=()
+install=
+source=('https://www.coactionos.com/redmine/attachments/download/131/CoActionOS-QtSDK-1.2.6.zip'
+'opt.patch')
+md5sums=('80c12e6f6815cdded7d7797b9db89ea5'
+         'c2ca4b9a154946eaefec1b9b91061a8a')
+build() {
+  cd $srcdir/CoActionOS-QtSDK/CSdk
+  patch -Nu -i ../../opt.patch
+  qmake-qt4
+  make || return 1
+}
+
+#package() {
+#}
