@@ -1,7 +1,7 @@
 # $Id: pkgbuild-mode.el,v 1.23 2007/10/20 16:02:14 juergen Exp $
 # Maintainer:  <durrw@durrwt430>
 pkgname=coactionos
-pkgver=1.2.6
+pkgver=1.2.7
 pkgrel=1 
 pkgdesc="CoActionOS libraries"
 url="http://www.coactionos.com"
@@ -13,11 +13,12 @@ conflicts=()
 replaces=()
 backup=()
 install=
-source=('https://www.coactionos.com/redmine/attachments/download/130/CoActionOS-1.2.6.zip')
-md5sums=('5214f50ce219e2f78aee20a40735babf')
+source=("https://www.coactionos.com/redmine/attachments/download/138/CoActionOS-$pkgver-beta.zip")
+md5sums=('2b55b8594c975a049223191824a7bc92')
 package() {
-  cp -R $srcdir/CoAction-Hero $pkgdir/opt
-  cp -R $srcdir/CoActionOS $pkgdir/opt
-  cp -R $srcdir/CoActionOS-Applib $pkgdir/opt
-  cp -R $srcdir/CoActionOS-Bootloader $pkgdir/opt
+  basedir='Users/tgil/Desktop/CoActionOS/1.2.7-beta'
+  find $srcdir/$basedir -name *.o -exec rm {} \;
+  cp -R $srcdir/$basedir/CoActionOS $pkgdir/opt
+  cp -R $srcdir/$basedir/CoActionOS-Applib $pkgdir/opt
+  cp -R $srcdir/$basedir/CoActionOS-Bootloader $pkgdir/opt
 }
